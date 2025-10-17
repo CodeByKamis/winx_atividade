@@ -1,0 +1,23 @@
+.corpo {
+  background-image: url('../assets/clubewinx_wallpaper.jpg'); 
+  background-size: cover; 
+  background-repeat: no-repeat; 
+  background-position: center; 
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #fff0fd1a;
+    backdrop-filter: blur(0.5px); 
+  }
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+}
