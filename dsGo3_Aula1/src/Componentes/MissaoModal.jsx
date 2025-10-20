@@ -1,6 +1,6 @@
 import { useState } from "react";
-import sucesso from "../assets/win.png";
-import erro from "../assets/raios.png";
+import sucesso from "../assets/winx_acertou.png";
+import erro from "../assets/winx_errou.png";
 
 export function MissaoModal({ missao, onClose, onConcluir }) {
   const [resposta, setResposta] = useState("");
@@ -17,7 +17,7 @@ export function MissaoModal({ missao, onClose, onConcluir }) {
       resposta.trim().toLowerCase() ===
       missao.respostaCorreta.trim().toLowerCase()
     ) {
-      setResultado("Resposta correta! Parabéns!");
+      setResultado("Isso fadinha, resposta correta! VAMOS LÁ WINX");
       setStatus("sucesso");
 
       // ✅ chama a função de concluir após 1s (tempo para mostrar feedback)
@@ -25,7 +25,7 @@ export function MissaoModal({ missao, onClose, onConcluir }) {
         onConcluir(missao.id);
       }, 1000);
     } else {
-      setResultado("Resposta incorreta. Tente novamente!");
+      setResultado("Você consegue melhor que isso fadinha! Vai de novo");
       setStatus("erro");
     }
   };
