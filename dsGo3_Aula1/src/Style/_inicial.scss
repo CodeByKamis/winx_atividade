@@ -1,55 +1,86 @@
-@use './variaveis' as *;
+@use './variaveis' as *; //é as variáveis
+
+///mobile first
 .inicial {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    gap: 20px;
+  display: flex; 
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; 
+  gap: 4vh;
+  padding: 2vh 4vw; 
+  text-align: center;
+
+  .titulo {
+    font-size: 1.6rem; //tamanho inicial pro mobile
+    color: #ffffff;
+  }
+
+  .logo {
+    height: 40vh;
+    max-width: 80vw;
+    object-fit: contain; //pra nao distorcer a imagem
+  }
+
+  .entrar {
+    background: $botao-rosaclaro;
+    color: #ffc7ee;
+    padding: 1rem 3rem;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: $sombrasBox; 
+    transition: transform 0.2s, background 0.3s;
+
+    &:hover {
+      transform: scale(1.05); //aumenta bem pouco
+      background: $botao-rosaescuro;
+      color: #ffffff;
+    }
+
+    &:focus {
+      outline: 3px solid #ffc7ea; //pra acessibilidade
+      outline-offset: 3px;
+    }
+  }
+}
+
+//tablet
+@media (min-width: 481px) and (max-width: 768px) {
+  .inicial {
+    .titulo {
+      font-size: 1.8rem; //aumenta fonte
+    }
 
     .logo {
-        height: 50vh;
-        gap:2vh;
+      height: 45vh; 
+      max-width: 70vw;
     }
 
     .entrar {
-        background: $botao-rosaclaro;
-        color: #ffc7ee;
-        text-decoration: none;
-        padding: 15px 40px;
-        border: none;
-        border-radius: 30px;
-        font-size: 1.2rem;
-        font-weight: bold;
-        cursor: pointer;
-        box-shadow: $sombrasBox;
-        transition: transform 0.2s, background 0.3s;
-        justify-content: center;
-
-        &:hover {
-            transform: scale(1.05);
-            background: $botao-rosaescuro;
-            color: #ffffff;
-        }
-
-        &:focus {
-            outline: 3px solid #ffc7ea;
-            outline-offset: 3px;
-        }
-    
-
-    
-
-}
-@media (max-width: 768px) {
-    h1 {
-      font-size: 2rem; // título menor em tablet
-    }
-
-    p {
-      font-size: 1rem;
+      font-size: 1.2rem;
+      padding: 1.2rem 3.5rem;
     }
   }
+}
 
+// desktop 
+@media (min-width: 769px) {
+  .inicial {
+    .titulo {
+      font-size: 2rem; //fonte maior pro desktop
+    }
 
+    .logo {
+      height: 50vh; 
+      max-width: 40vw;
+    }
+
+    .entrar {
+      font-size: 1.3rem;
+      padding: 1.2rem 4rem;
+    }
+  }
 }

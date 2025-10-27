@@ -1,0 +1,161 @@
+@use './variaveis' as *;
+
+
+//mobile first
+dialog.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 85vw;
+  max-height: 85vh;
+  background: $claro;
+  border-radius: 1rem;
+  padding: 2rem;
+  text-align: center;
+  border: 2px solid $destaque-rosa;
+  box-shadow: 0 0 0.75rem rgba(163, 7, 132, 0.7),
+              0 0.5rem 1.5rem rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+  overflow-y: auto;
+
+
+  &::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $destaque-rosa;
+    border-radius: 0.5rem;
+  }
+
+  h2 {
+    margin-bottom: 2rem;
+    color: $destaque-rosa;
+    font-size: 1.6rem;
+  }
+
+  p {
+    margin-bottom: 1.5rem;
+    color: #69002c;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+
+
+//label da resposta
+  .digite_resposta {
+    color: #68004e;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1vh;
+  }
+
+//input da resposta
+  .caixaTexto {
+    width: 80%;
+    padding: 0.6rem;
+    margin-bottom: 1rem;
+    border-radius: 6px;
+    border: 2px solid $destaque-rosa;
+    font-size: 1.1rem;
+    background: $claro;
+    color: #69002c;
+    text-align: center;
+
+    &:focus {
+      outline: 1px solid #47032c;
+      outline-offset: 0.2rem;
+    }
+  }
+
+//estilizadno botoes
+  .modal-botoes {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+
+    button {
+      background: $botao-rosaclaro;
+      color: #fff;
+      border: none;
+      border-radius: 2rem;
+      padding: 0.8rem 2rem;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: $sombrasBox;
+      transition: transform 0.2s, background 0.3s;
+
+      &:hover {
+        transform: scale(1.05);
+        background: $botao-rosaescuro;
+      }
+
+      &:focus {
+        outline: 3px solid #ffc7ea;
+        outline-offset: 0.2rem;
+      }
+    }
+  }
+
+  .resultado {
+    margin-top: 1.5rem;
+
+    p {
+      font-weight: bold;
+    }
+
+    img {
+      margin-top: 1rem;
+      width: 6rem;
+      height: auto;
+    }
+  }
+}
+
+//tablet
+@media (min-width: 481px) and (max-width: 768px) {
+  dialog.modal {
+    width: 70vw;
+    max-height: 80vh;
+    padding: 1.8rem;
+
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    .caixaTexto {
+      width: 75%;
+      font-size: 1.1rem;
+    }
+
+    .modal-botoes button {
+      font-size: 0.95rem;
+    }
+  }
+}
+
+//pc
+@media (min-width: 769px) {
+  dialog.modal {
+    width: 50vw;
+    max-height: 80vh;
+    padding: 2rem;
+
+    h2 {
+      font-size: 1.6rem;
+    }
+
+    .caixaTexto {
+      width: 70%;
+      font-size: 1.1rem;
+    }
+
+    .modal-botoes button {
+      font-size: 1rem;
+    }
+  }
+}

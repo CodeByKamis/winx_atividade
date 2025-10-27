@@ -1,4 +1,6 @@
-.corpo {
+
+// container da pagina winx que é a tela principal após a inicial
+.container {
   background-image: url('../assets/clubewinx_wallpaper.jpg'); 
   background-size: cover; 
   background-repeat: no-repeat; 
@@ -9,14 +11,13 @@
   overflow: hidden;
 
   &::before {
-    content: "";
     position: absolute;
     inset: 0;
     background: #fff0fd1a;
     backdrop-filter: blur(0.5px); 
   }
 
-  > * {
+  * {
     position: relative;
     z-index: 1;
   }

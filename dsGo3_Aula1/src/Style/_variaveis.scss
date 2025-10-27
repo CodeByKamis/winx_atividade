@@ -1,3 +1,5 @@
+
+// estilização pre definida
 $fundo: #e0bdcf;
 $claro: #f0ebeb;
 $card:#f2dce9;
@@ -10,13 +12,13 @@ $botao-rosaescuro: linear-gradient(135deg, #6b0956, #e52cbd);
 $box-fundo: rgba(0, 0, 0, 0.8);
 $borda: 1px solid $fundo;
 
-
+// estilizacao padrao para todos
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
+// corpo
 body {
   background-color: $fundo;
   width: 100vw;

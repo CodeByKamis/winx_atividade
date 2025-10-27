@@ -1,77 +1,81 @@
-import { useState } from "react";
+//importa hooks e imagens de feedback
+import { useState, useEffect, useRef } from "react";
 import sucesso from "../assets/winx_acertou.png";
 import erro from "../assets/winx_errou.png";
 
-export function MissaoModal({ missao, onClose, onConcluir }) {
+//modal da missão
+export function MissaoModal({ missao, onClose, onConcluir, triggerRef }) {
+  //estado da resposta e resultado
   const [resposta, setResposta] = useState("");
   const [resultado, setResultado] = useState(null);
   const [status, setStatus] = useState(null);
+  const inputRef = useRef(null); 
+  const dialogRef = useRef(null); 
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, []);
 
+  //fecha modal e devolve foco pra quem abriu
+  const handleClose = () => {
+    onClose();
+    triggerRef?.current?.focus();
+  };
+
+  //verifica se a resposta ta certa
   const verificarResposta = () => {
-    if (!resposta.trim()) {
-      alert("Por favor, digite uma resposta antes de enviar!");
-      return;
-    }
+    if (!resposta.trim()) return alert("ATENÇÃO\nDigite sua resposta antes de enviar");
 
-    if (
-      resposta.trim().toLowerCase() ===
-      missao.respostaCorreta.trim().toLowerCase()
-    ) {
-      setResultado("Isso fadinha, resposta correta! VAMOS LÁ WINX");
+    if (resposta.trim().toLowerCase() === missao.respostaCorreta.trim().toLowerCase()) {
+      setResultado("resposta certa! parabéns winx");
       setStatus("sucesso");
-
-      // ✅ chama a função de concluir após 1s (tempo para mostrar feedback)
-      setTimeout(() => {
-        onConcluir(missao.id);
-      }, 1000);
+      setTimeout(() => onConcluir(missao.id), 1000);
     } else {
-      setResultado("Você consegue melhor que isso fadinha! Vai de novo");
+      setResultado("errou, tenta de novo");
       setStatus("erro");
     }
   };
 
   return (
-    <dialog open className="modal">
-      <h2 className="titulo" id="titulo-missao">
-        {missao.titulo}
-      </h2>
-      <p id="descricao-missao">{missao.descricao}</p>
+    <dialog
+      ref={dialogRef}
+      open
+      className="modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby={`titulo-missao-${missao.id}`}
+      aria-describedby={`descricao-missao-${missao.id}`}
+      tabIndex={-1}
+    >
+      {/*titulo e descricao*/}
+      <h2 id={`titulo-missao-${missao.id}`}>{missao.titulo}</h2>
+      <p id={`descricao-missao-${missao.id}`}>{missao.descricao}</p>
 
-      <label htmlFor="resposta" className="digite_resposta">
-        Digite sua resposta
-      </label>
+      {/*input de resposta*/}
+      <label className="digite_resposta" htmlFor={`resposta-${missao.id}`}>digite sua resposta</label>
       <input
-        className="caixaTexto"
-        id="resposta"
+      className="caixaTexto"
+        ref={inputRef}
+        id={`resposta-${missao.id}`}
         type="text"
-        placeholder="Digite sua resposta..."
+        placeholder="digite sua resposta..."
         value={resposta}
         onChange={(e) => setResposta(e.target.value)}
         required
+        aria-label={`resposta para a missão ${missao.titulo}`}
       />
 
+      {/*botoes*/}
       <div className="modal-botoes">
-        <button onClick={verificarResposta}>Enviar</button>
-        <button onClick={onClose}>Fechar</button>
+        <button onClick={verificarResposta}>enviar</button>
+        <button onClick={handleClose}>fechar</button>
       </div>
 
+      {/*figurinhas de certo e errado pra resposta*/}
       {resultado && (
-        <div className="resultado">
+        <div className="resultado" aria-live="polite" role="status">
           <p>{resultado}</p>
-          {status === "sucesso" && (
-            <img
-              src={sucesso}
-              alt="Missão concluída com sucesso"
-              width="100"
-            />
-          )}
-          {status === "erro" && (
-            <img
-              src={erro}
-              alt="Erro na resposta da missão"
-              width="100"
-            />
-          )}
+          {status === "sucesso" && <img src={sucesso} alt="missão concluída" width={100} height={100} />}
+          {status === "erro" && <img src={erro} alt="resposta errada" width={100} height={100} />}
         </div>
       )}
     </dialog>

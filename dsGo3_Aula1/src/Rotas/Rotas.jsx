@@ -1,20 +1,18 @@
 
-import { Routes, Route } from "react-router-dom";
-import { Inicial } from "../Paginas/Inicial";
-import { DSGo } from "../Paginas/DSGo";
-import { Missao} from "../Paginas/Missao";
-// import { Inventario } from "../Pagina/Inventario";
-// import { GeolocalizacaoMapa } from "../Componentes/GeolocalizacaoMapa";
+import { Routes, Route } from "react-router-dom"; //serve pra criar as rota
+import { Inicial } from "../Paginas/Inicial"; //importanto a tela incial
+import { Winx } from "../Paginas/Winx"; //tela principal
+import { Missao } from "../Paginas/Missao"; //missoes
 
+
+//organizando as rotas do projeto
 export function Rotas() {
     return (
         <Routes>
             <Route path="/" element={<Inicial />} />
-            <Route path="/dsgo" element={<DSGo />} >  
-                <Route index element ={<DSGo/>}/>
+            <Route path="/winx" element={<Winx />} >  
+                <Route index element ={<Winx/>}/>
                 <Route path="missao" element={<Missao />} /> 
-             {/*     <Route path="inventario" element={<Inventario/>} />
-                <Route path="camera" element={<GeolocalizacaoMapa/>} />*/}
             </Route>   
         </Routes>
     );

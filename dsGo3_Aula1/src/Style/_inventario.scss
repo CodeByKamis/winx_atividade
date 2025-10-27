@@ -1,13 +1,18 @@
 @use './variaveis' as *;
+
+// seguindo o mobile first
 .inventario {
   padding: 2rem;
   text-align: center;
   color: #fff;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-  h2 {
+  h1 {
     margin-bottom: 1.5rem;
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 
   .vazio {
@@ -15,77 +20,133 @@
     color: #ffffff;
   }
 
-  /* Grid responsivo para exibir as figurinhas */
+// mostras as figur
   .grid {
     display: grid;
     gap: 1rem;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
     justify-items: center;
-    margin-top: 15px;
+    margin-top: 1.5rem;
+    width: 100%;
+    max-width: 90vw;
   }
 
   .figurinha {
     background: $card;
-    border-radius: 12px;
+    border-radius: 1rem;
     padding: 1rem;
-    box-shadow: 0 0 8px rgba(0,0,0,0.4);
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.4);
     transition: transform 0.2s;
     width: 100%;
-    max-width: 150px;
-    color: #fd10ca;;
+    max-width: 9rem;
+    color: #fd10ca;
+    outline: none;
 
-    &:hover {
+    &:hover,
+    &:focus {
       transform: scale(1.05);
+      outline: 2px solid #ffc7ea;
+      outline-offset: 4px;
     }
 
     img {
       width: 100%;
-      max-width: 100px;
+      max-width: 6rem;
       margin-bottom: 0.5rem;
+      height: auto;
+      border-radius: 0.5rem;
     }
 
-    p {
+    figcaption {
       margin: 0;
       font-weight: bold;
       font-size: 1rem;
     }
   }
+
+  .limpar-inventario {
+    background: $botao-rosaclaro;
+    color: #ffc7ee;
+    border: none;
+    border-radius: 2rem;
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: $sombrasBox;
+    transition: transform 0.2s, background 0.3s;
+    margin-bottom: 2rem;
+
+    &:hover {
+      transform: scale(1.05);
+      background: $botao-rosaescuro;
+      color: #fff;
+    }
+
+    &:focus {
+      outline: 3px solid #ffc7ea;
+      outline-offset: 0.2rem;
+    }
+  }
+
+  .rodape {
+    margin-top: auto;
+    font-size: 0.9rem;
+    color: #fff;
+    text-align: center;
+  }
+
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    border: 0;
+  }
 }
 
-/* 🔹 Responsividade */
-@media (max-width: 768px) {
+// tablet
+@media (min-width: 481px) and (max-width: 768px) {
   .inventario {
-    padding: 1rem;
-
-    h2 {
-      font-size: 1.5rem;
+    h1 {
+      font-size: 2rem;
     }
 
     .grid {
-      gap: 0.5rem;
+      gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
     }
 
     .figurinha {
-      padding: 0.8rem;
+      max-width: 10rem;
+      img {
+        max-width: 8rem;
+      }
     }
   }
 }
 
-@media (max-width: 480px) {
+//pc
+@media (min-width: 769px) {
   .inventario {
-    h2 {
-      font-size: 1.2rem;
+    padding: 4rem;
+    h1 {
+      font-size: 2.2rem;
+    }
+
+    .grid {
+      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
     }
 
     .figurinha {
-      max-width: 100px;
-
+      max-width: 11rem;
       img {
-        max-width: 80px;
-      }
-
-      p {
-        font-size: 0.9rem;
+        max-width: 9rem;
       }
     }
   }

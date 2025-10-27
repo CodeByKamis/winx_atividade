@@ -1,9 +1,10 @@
 import { Outlet } from 'react-router-dom';
 import { Menu } from '../Componentes/Menu';
 
-export function DSGo(){
+export function Winx(){
     return(
-        <main className="corpo">
+        //retornando as informações da tela
+        <main className="container">
             <Outlet/>
             <Menu/>            
         </main>
