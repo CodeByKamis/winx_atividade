@@ -1,153 +1,107 @@
 @use './variaveis' as *;
 
-// seguindo o mobile first
-.inventario {
+.conteiner {
+  background-color: rgba(54, 1, 45, 0.6);
   padding: 2rem;
-  text-align: center;
+  border-radius: 1.25rem;
+  color: #ffaaf7;
+  max-width: 1200px;
+  margin: 3rem auto;
+  overflow-y: auto;
+  max-height: 80vh;
+  position: relative;
+
+  h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: #e414ac;
+    margin-bottom: 1.5rem;
+  }
+}
+
+// botao de fechar a pagina
+.button {
+  background: $botao-rosaclaro;
   color: #fff;
-  min-height: 100vh;
+  border: none;
+  border-radius: 2rem;
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: $sombrasBox;
+  transition: transform 0.2s, background 0.3s;
+
+  &:hover {
+    transform: scale(1.05);
+    background: $botao-rosaescuro;
+  }
+
+  &:focus {
+    outline: 3px solid #ffc7ea;
+    outline-offset: 0.2rem;
+  }
+}
+
+// texto que aparece quando nao tem nenhuma figurinha
+.vazio {
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+// deixa 3 fig por linha
+.missoes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+  justify-content: center;
+  align-items: start;
+  justify-items: center;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 64rem;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+// obs: eu estava tendo problema com o tamanho da figurinha
+.figurinha-card {
+  background-color: $card;
+  border-radius: 1rem;
+  padding: 0.6rem;
+  text-align: center;
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.25);
+  transition: 0.3s;
+  width: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  h1 {
-    margin-bottom: 1.5rem;
-    font-size: 1.8rem;
-  }
-
-  .vazio {
-    font-size: 1.2rem;
-    color: #ffffff;
-  }
-
-// mostras as figur
-  .grid {
-    display: grid;
-    gap: 1rem;
-    grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
-    justify-items: center;
-    margin-top: 1.5rem;
-    width: 100%;
-    max-width: 90vw;
-  }
-
-  .figurinha {
-    background: $card;
-    border-radius: 1rem;
-    padding: 1rem;
-    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.4);
-    transition: transform 0.2s;
-    width: 100%;
-    max-width: 9rem;
-    color: #fd10ca;
-    outline: none;
-
-    &:hover,
-    &:focus {
-      transform: scale(1.05);
-      outline: 2px solid #ffc7ea;
-      outline-offset: 4px;
-    }
-
-    img {
-      width: 100%;
-      max-width: 6rem;
-      margin-bottom: 0.5rem;
-      height: auto;
-      border-radius: 0.5rem;
-    }
-
-    figcaption {
-      margin: 0;
-      font-weight: bold;
-      font-size: 1rem;
-    }
-  }
-
-  .limpar-inventario {
-    background: $botao-rosaclaro;
-    color: #ffc7ee;
-    border: none;
-    border-radius: 2rem;
-    padding: 0.8rem 2rem;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: $sombrasBox;
-    transition: transform 0.2s, background 0.3s;
-    margin-bottom: 2rem;
-
-    &:hover {
-      transform: scale(1.05);
-      background: $botao-rosaescuro;
-      color: #fff;
-    }
-
-    &:focus {
-      outline: 3px solid #ffc7ea;
-      outline-offset: 0.2rem;
-    }
-  }
-
-  .rodape {
-    margin-top: auto;
-    font-size: 0.9rem;
-    color: #fff;
-    text-align: center;
-  }
+  justify-content: center;
+  min-width: 0;
+}
 
 
-  .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    padding: 0;
-    overflow: hidden;
-    clip: rect(0 0 0 0);
-    border: 0;
+// organizando o tamanho da figurinha
+.imagemfigurinha {
+  display: block;
+  width: 10rem;
+  height: 10rem;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+
+// ajuste de mobile
+@media (max-width: 480px) {
+  .missoes-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.875rem;
   }
 }
 
-// tablet
+// ajuste pro tablet
 @media (min-width: 481px) and (max-width: 768px) {
-  .inventario {
-    h1 {
-      font-size: 2rem;
-    }
-
-    .grid {
-      gap: 1rem;
-      grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
-    }
-
-    .figurinha {
-      max-width: 10rem;
-      img {
-        max-width: 8rem;
-      }
-    }
-  }
-}
-
-//pc
-@media (min-width: 769px) {
-  .inventario {
-    padding: 4rem;
-    h1 {
-      font-size: 2.2rem;
-    }
-
-    .grid {
-      gap: 1.5rem;
-      grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
-    }
-
-    .figurinha {
-      max-width: 11rem;
-      img {
-        max-width: 9rem;
-      }
-    }
+  .missoes-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }

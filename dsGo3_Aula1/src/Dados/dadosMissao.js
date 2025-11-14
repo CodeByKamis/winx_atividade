@@ -66,4 +66,40 @@ export const missoes = [
     respostaCorreta: "19 de dezembro",
     status: 'disponivel'
   }
+  ,
+  {
+    id: 9,
+    titulo: "Conhecimentos Gerais",
+    missao: "Quem é o cordenador de curso?",   
+    descricao: "Ele tem várias balas",
+    respostaCorreta: "Lucas",
+    status: 'disponivel'
+  }
+  ,
+  {
+    id: 10,
+    titulo: "Conhecimentos Gerais",
+    missao: "Qual é o nome do SENAI que eu estudo?",   
+    descricao: "Parece um castelo",
+    respostaCorreta: "Roberto Mange",
+    status: 'disponivel'
+  }
+  ,
+  {
+    id: 11,
+    titulo: "Conhecimentos Gerais",
+    missao: "Qual é a sala que eu estudo?",   
+    descricao: "No primeiro andar so senai",
+    respostaCorreta: "103",
+    status: 'disponivel'
+  }
+  ,
+  {
+    id: 12,
+    titulo: "Conhecimentos Gerais",
+    missao: "Qual é o nome do meu curso?",   
+    descricao: "é de TI",
+    respostaCorreta: "Desenvolvimento de Sistemas",
+    status: 'disponivel'
+  }
 ];

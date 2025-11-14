@@ -11,7 +11,7 @@ export function Menu() {
   // define os itens do menu com label é bom para o desempenho do codigo
   const menuItems = [
     { label: "Missões", to: "/winx/missao", img: missaoImg, alt: "ícone de missões winx", isLCP: true },
-    { label: "Inventário", to: "/winx", img: bau, alt: "ícone de inventário winx" },
+    { label: "Inventário", to: "/winx/inventario", img: bau, alt: "ícone de inventário winx" },
     { label: "Localização", to: "/winx", img: mapa, alt: "ícone de localização winx" },
     { label: "Câmera", to: "/winx", img: camera, alt: "ícone da câmera wixn" },
   ];
