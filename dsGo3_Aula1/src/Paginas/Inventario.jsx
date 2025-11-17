@@ -11,7 +11,7 @@ export function Inventario() {
   }, []);
 
   return (
-    <main className="conteiner" role="main" aria-label="tela de inventario">
+    <main className="conteiner" role="main" aria-labelledby="titulo-inventario">
       
       {/* botao para fehcar a pagina */}
       <button
@@ -20,38 +20,40 @@ export function Inventario() {
         aria-label="botão para fechar o inventario"
         title="fechar inventario"
       >
-        x
+        <span aria-hidden="true">×</span>
       </button>
+
       {/* titulo da pagina */}
       <h2 id="titulo-inventario">INVENTÁRIO</h2>
+
       {/* tratativa de erro se não tiver figurinha nenhuma */}
       {figurinhas.length === 0 ? (
         <p className="vazio" role="status">
           nenhuma figurinha coletada ainda
         </p>
       ) : (
-        <div
+        <ul
           className="missoes-grid"
-          role="lista"
-          aria-labelledby="titulo do inventario"
+          /* lista de figurinhas */
+          aria-label="lista de figurinhas"
         >
           {/* mostrar as figurinha */}
           {figurinhas.map((f) => (
-            <div
+            <li
               key={f.id}
               className="figurinha-card"
-              role="lista figurinhas"
-              aria-label={"figurinhas"}
+              /* cada figurinha individual */
+              aria-label="figurinha"
             >
               <img
                 className="imagemfigurinha"
                 src={f.imagem}
-                alt={"figurinha"}
+                alt={`figurinha ${f.nome || f.id}`}
                 loading="lazy"
               />
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
       )}
     </main>
   );
