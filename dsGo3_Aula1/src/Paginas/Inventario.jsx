@@ -37,7 +37,7 @@ export function Inventario() {
           /* lista de figurinhas */
           aria-label="lista de figurinhas"
         >
-          {/* mostrar as figurinha */}
+          
           {figurinhas.map((f) => (
             <li
               key={f.id}

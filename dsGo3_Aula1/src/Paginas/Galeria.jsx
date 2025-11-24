@@ -51,7 +51,7 @@ export function Galeria() {
     });
   };
 
-  // (opcional) função para limpar a galeria
+  //função para limpar a galeria
   const limparGaleria = () => {
     setFotos([]);
     localStorage.removeItem(STORAGE_KEY);
@@ -71,7 +71,7 @@ export function Galeria() {
         <span aria-hidden="true">×</span>
       </button>
 
-      {/* Camera envia a foto via onFotoTirada */}
+      {/* camera envia a foto via onFotoTirada */}
       <Camera onFotoTirada={adicionarFoto} />
 
       <h2>Galeria de fotos</h2>
