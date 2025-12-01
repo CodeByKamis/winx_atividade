@@ -5,6 +5,7 @@ import { Winx } from "../Paginas/Winx"; //tela principal
 import { Missao } from "../Paginas/Missao"; //missoes
 import { Inventario } from "../Paginas/Inventario"; //missoes
 import { Galeria } from "../Paginas/Galeria"; //missoes
+import Geolocalizacao from "../Paginas/Geolocalizacao";
 
 //organizando as rotas do projeto
 export function Rotas() {
@@ -16,6 +17,7 @@ export function Rotas() {
                 <Route path="missao" element={<Missao />} /> 
                 <Route path="inventario" element={<Inventario />} /> 
                 <Route path="galeria" element={<Galeria />} /> 
+                <Route path="mapa" element={<Geolocalizacao />} /> 
 
             </Route>   
         </Routes>

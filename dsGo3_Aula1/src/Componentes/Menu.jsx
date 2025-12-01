@@ -12,7 +12,7 @@ export function Menu() {
   const menuItems = [
     { label: "Missões", to: "/winx/missao", img: missaoImg, alt: "ícone de missões winx", isLCP: true },
     { label: "Inventário", to: "/winx/inventario", img: bau, alt: "ícone de inventário winx" },
-    { label: "Localização", to: "/winx", img: mapa, alt: "ícone de localização winx" },
+    { label: "Localização", to: "/winx/mapa", img: mapa, alt: "ícone de localização winx" },
     { label: "Câmera", to: "/winx/galeria", img: camera, alt: "ícone da câmera wixn" },
   ];
 

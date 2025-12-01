@@ -24,12 +24,12 @@ export function Missao() {
     <section className="conteiner" role="region" aria-label="seção de missões do jogo">
       {/*botão pra fechar as missao*/}
       <button
-        className="botao-fechar"
-        onClick={voltarTelaInicial}
-        aria-label="fechar e voltar à tela inicial"
-        title="fechar"
+        className="button"
+        onClick={() => navigate("/winx")}
+        aria-label="botão para fechar a missão"
+        title="fechar a missão"
       >
-        ×
+        <span aria-hidden="true">×</span>
       </button>
 
       <h2 >MISSÕES</h2>

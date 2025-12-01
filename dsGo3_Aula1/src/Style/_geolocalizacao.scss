@@ -1,0 +1,221 @@
+@use './variaveis' as *;
+
+
+:root {
+  --bg-panel: linear-gradient(180deg, rgba(6,2,8,0.78), rgba(20,6,15,0.72));
+  --accent: #ff7fcf;
+  --rosa-destaque: #e414ac;
+}
+
+/* sr-only helper */
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* Overlay principal (modal-like) */
+.sobreposicao-geolocalizacao {
+  position: fixed;
+  inset: 3rem 2rem 4rem 2rem;
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 1rem;
+  z-index: 1200;
+  pointer-events: auto;
+  align-items: stretch;
+  min-height: 60vh;
+  box-sizing: border-box;
+}
+
+@media (max-width: 960px) {
+  .sobreposicao-geolocalizacao {
+    grid-template-columns: 1fr;
+    inset: 1.5rem 1rem 4rem 1rem;
+    max-height: calc(100vh - 6rem);
+    overflow-y: auto;
+  }
+}
+
+
+.botao {
+  background: $botao-rosaclaro;
+  color: #fff;
+  border: none;
+  border-radius: 2rem;
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: $sombrasBox;
+  transition: transform 0.2s, background 0.3s;
+
+  &:hover {
+    transform: scale(1.05);
+    background: $botao-rosaescuro;
+  }
+
+  &:focus {
+    outline: 3px solid #ffc7ea;
+    outline-offset: 0.2rem;
+  }
+}
+/* Painel esquerdo */
+.painel-geolocalizacao {
+  background: var(--bg-panel);
+  border-radius: 12px;
+  padding: 1.25rem;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.04);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.5);
+  position: relative;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.painel-geolocalizacao .button {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  background: #ff99d0;
+  color: white;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+}
+
+/* Título */
+.titulo-painel {
+  text-align: center;
+  color: var(--rosa-destaque);
+  margin: 0.25rem 0 1rem;
+  font-size: 1.25rem;
+}
+
+/* Formulário */
+.formulario-painel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  height: calc(100% - 56px);
+  overflow: auto;
+  padding-right: 0.25rem;
+  box-sizing: border-box;
+}
+
+.formulario-painel::-webkit-scrollbar { width: 0.5rem; }
+.formulario-painel::-webkit-scrollbar-thumb { background: #e414ac; border-radius: 0.4rem; }
+
+.secao-painel {
+  background: rgba(255,255,255,0.02);
+  padding: 0.8rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.02);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  box-sizing: border-box;
+}
+
+.secao-painel h4 { margin: 0; color: #ffd4f7; font-size: 0.95rem; font-weight: 700; }
+.secao-painel label { color: #f7c7e8; font-weight: 700; font-size: 0.85rem; }
+
+.entrada {
+  background: #0f0b0f;
+  border: 1px solid rgba(255,255,255,0.06);
+  color: #fff;
+  padding: 0.5rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  box-sizing: border-box;
+}
+
+.entrada:focus {
+  outline: 3px solid rgba(255, 200, 230, 0.22);
+  outline-offset: 2px;
+}
+
+.arquivo-entrada { padding: 0.4rem; }
+
+.botao-acao {
+  margin-top: 0.35rem;
+  align-self: start;
+  background: linear-gradient(180deg, #ff7fcf, #ff3aa7);
+  color: white;
+  border: none;
+  padding: 0.5rem 0.8rem;
+  border-radius: 10px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 6px 14px rgba(255,20,120,0.12);
+}
+
+.botao-acao:focus { outline: 3px solid rgba(255,200,230,0.2); outline-offset: 2px; }
+
+.aviso-erro {
+  color: #ff8fbf;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+/* preview */
+.area-preview { margin-top: 0.35rem; }
+.imagem-preview { width: 160px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.06); }
+
+/* ações do painel (botão gerar) */
+.acoes-painel { display: flex; justify-content: center; padding: 0.6rem 0; }
+.botao-gerar {
+  background: linear-gradient(180deg, #ff7fcf, #ff3aa7);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.1rem;
+  border-radius: 999px;
+  font-weight: 800;
+  box-shadow: 0 8px 18px rgba(46,161,243,0.18);
+  cursor: pointer;
+}
+.botao-gerar:focus { outline: 3px solid rgba(46,161,243,0.2); outline-offset: 3px; }
+
+/* Área do mapa (direita) */
+.mapa-geolocalizacao {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.04);
+  box-shadow: 0 6px 30px rgba(0,0,0,0.45);
+  height: 100%;
+  min-height: 420px;
+  display: block;
+  box-sizing: border-box;
+}
+
+/* Garantias para o container do leaflet e ids usados no componente */
+.mapa-geolocalizacao > .leaflet-container,
+.mapa-geolocalizacao > #mapa-geolocalizacao,
+.mapa-geolocalizacao > #mapa {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 420px;
+  display: block;
+}
+
+/* mobile adjustments */
+@media (max-width: 960px) {
+  .painel-geolocalizacao { order: 2; }
+  .mapa-geolocalizacao { order: 1; height: 320px; margin-bottom: 0.75rem; min-height: 320px; }
+}
+
+/* small helper to ensure focus visible on inputs/buttons elsewhere */
+input:focus, button:focus {
+  box-shadow: 0 0 0 3px rgba(255, 200, 230, 0.18);
+  outline: none;
+}
